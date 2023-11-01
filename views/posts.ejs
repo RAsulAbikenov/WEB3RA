@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog</title>
+</head>
+<body>
+<%-include('particles/navbar.ejs')%>
+<div class="container">
+    <h1>Welcome to Blog</h1>
+
+
+    <ul>
+        <% posts.forEach(function(post) { %>
+            <li>
+                <h2><%= post.title %></h2>
+                <p class="post-content">
+                    <%= post.content.substring(0, 100) %>
+                    <span class="read-more" style="display: none;"><%= post.content.substring(100) %></span>
+                    <button class="show-more-button">Show more...</button>
+                    <br>
+                    Date: <%=post.date%>
+                </p>
+
+            </li>
+        <% }); %>
+    </ul>
+</div>
+
+<script>
+    const postContentElements = document.querySelectorAll('.post-content');
+    const showMoreButtons = document.querySelectorAll('.show-more-button');
+
+    for (let i = 0; i < postContentElements.length; i++) {
+        const postContent = postContentElements[i];
+        const showMoreButton = showMoreButtons[i];
+
+        if (postContent.textContent.length > 100) {
+            showMoreButton.style.display = 'block';
+        }
+
+        showMoreButton.addEventListener('click', () => {
+            postContent.querySelector('.read-more').style.display = 'inline';
+            showMoreButton.style.display = 'none';
+        });
+    }
+</script>
+</body>
+</html>

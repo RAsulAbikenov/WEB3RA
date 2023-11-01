@@ -1,0 +1,27 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add post</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+<%-include('particles/navbar.ejs')%>
+<div class="add-post-container">
+    <h1>Add a new post</h1>
+    <form action="/add-post" method="post">
+        <label for="title">Header:</label>
+        <input type="text" id="title" name="title" required><br>
+
+        <label for="content">Description:</label>
+        <textarea id="content" name="content" rows="4" required></textarea><br>
+
+        <input type="submit" value="Add">
+    </form>
+</div>
+</body>
+</html>
